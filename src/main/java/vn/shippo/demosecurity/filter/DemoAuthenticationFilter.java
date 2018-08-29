@@ -28,7 +28,6 @@ public class DemoAuthenticationFilter extends OncePerRequestFilter {
     @Autowired
     private UserService userService;
 
-
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
 
@@ -41,12 +40,10 @@ public class DemoAuthenticationFilter extends OncePerRequestFilter {
 
         String accessToken = request.getHeader(HEADER_TOKEN);
 
-        //TO DO
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(new MediaType[] { MediaType.APPLICATION_JSON }));
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set(HEADER_TOKEN, accessToken);
-
 
        //  HttpEntity<String>: To get result as String.
         HttpEntity<String> entity = new HttpEntity<String>(headers);
